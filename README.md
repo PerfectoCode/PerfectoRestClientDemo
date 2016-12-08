@@ -101,11 +101,3 @@ this.myNewCommand = (Param)=>{
     return this.executeCommand('MyNewCommandName', 'MyNewCommandSubCommand', params);
 }
 ```
-## **Updates:**
-- 24.11 Init repo , implemented executions start/end, functions use promises.
-- 29.11 Fixed Promises and code styling.<br/>
-    implemented: device open/close commands.<br/>
-    Browser open/close/goto. <br/>
-- 1.12 Added browser.element functions: find, click , set.
-    Now Cradle and Devices operations are available.
-    Test styling.
