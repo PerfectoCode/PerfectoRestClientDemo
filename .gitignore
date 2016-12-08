@@ -1,0 +1,5 @@
+# .gitignore for nodejs app
+
+# Dependency directory
+node_modules/
+.vscode
