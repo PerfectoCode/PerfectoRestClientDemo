@@ -3,22 +3,23 @@ NodeJS Demo Client for Perfecto REST API. <br/>
 
 Get started with Perfecto RESTful API, read more at our [Community](https://community.perfectomobile.com/posts/938046-getting-started-with-rest-api).
 
-## **Useage:**
+## **Install & dependencies:**
+- Run `npm install` command within the project's directory.
 
-- Run `npm install` within the project's directory.
-- Require PerfectoClient library:
+## **Useage:**
+- Require Perfecto library:
 ``` JavaScript
 var Perfecto = require('../lib/Perfecto').Perfecto;
 ``` 
-- Create a new client:
+- Creating a new client:
 ```JavaScript
 var client = new Perfecto.PerfectoClient('https' , 'MyHost.perfectomobile.com', MyUser, MyPassword);
 ``` 
-- Use the [ClientConf.js](test/ClientConf.js) file for easier test configuration.
+- Use the [ClientConf.js](test/ClientConf.js) file to setup the test configuration.
 ```JavaScript
 var client = new Perfecto.PerfectoClient(Conf.protocol ,Conf.host, Conf.user, Conf.pass);
 ``` 
-- Starting a new execution, open device and browser navigation:
+- Starting a new execution, open device and browser navigation, click [here](example/testClient.js) for the complite example:
 ```JavaScript
 client.startNewExecution()
     .then((execution_Id)=>{
@@ -45,10 +46,10 @@ client.startNewExecution()
     });
 
 ``` 
-- .then(ans) .... , ans contains the previous block command's response in JSON format. 
+- .then(ans) .... , the *ans* object contains the previous block response (JSON format). 
 ```JavaScript
  .then((ans)=>{
-     console.log(ans); // Will print the respone's body.
+     console.log(ans); // print the respone's body.
      //... do something
  }
 ```
@@ -68,8 +69,8 @@ client.startNewExecution()
 });
 ```
 
-## **Adding a new command:** 
-Consider the following function at the file [PerfectoClient.js](lib/PerfectoClient.js): <br/>
+## **Implementing a new command:** 
+Consider the following function in the file [PerfectoClient.js](lib/PerfectoClient.js): <br/>
 ```JavaScript
 /**
  * Execute http get command
@@ -89,15 +90,15 @@ this.executeCommand = (command, subcommand, params)=>{
    .
    .
    .
-   // JS Code ...
+   // JavaScript code ...
 }
 ```
 
-Use it in order to add a new command and extend the Perfecto REST API client, for example:<br/>
-Make sure you add the command within the PerfectoClient object scope. <br/>
+Use *executeCommand* in order to add a new command and extend the Perfecto REST API client, for example:<br/>
 ```JavaScript
 this.myNewCommand = (Param)=>{
     let params = ['ParamName=' + Param];
     return this.executeCommand('MyNewCommandName', 'MyNewCommandSubCommand', params);
 }
 ```
+Make sure you add the command within the PerfectoClient object scope. <br/>
