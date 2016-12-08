@@ -94,7 +94,7 @@ this.executeCommand = (command, subcommand, params)=>{
 }
 ```
 
-Use *executeCommand* in order to add a new command and extend the Perfecto REST API client, for example:<br/>
+Use the *executeCommand* method to add your new command, for example:<br/>
 ```JavaScript
 this.myNewCommand = (Param)=>{
     let params = ['ParamName=' + Param];
