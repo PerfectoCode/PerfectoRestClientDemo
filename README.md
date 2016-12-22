@@ -6,6 +6,11 @@ Get started with Perfecto RESTful API, read more at our [Community](https://comm
 ## **Install & dependencies:**
 - Run `npm install` command within the project's directory.
 
+## ***Running tests:*
+- The tests example [here](example/PerfectoSpec.js) uses Jasmine testing framework.
+- Configure your Perfecto lab User, password and host at [ClientConf.js](example/ClientConf.js).
+- Run the tests using `npm test` command.  
+
 ## **Useage:**
 - Require Perfecto library:
 ``` JavaScript
@@ -19,7 +24,7 @@ var client = new Perfecto.PerfectoClient('https' , 'MyHost.perfectomobile.com', 
 ```JavaScript
 var client = new Perfecto.PerfectoClient(Conf.protocol ,Conf.host, Conf.user, Conf.pass);
 ``` 
-- Starting a new execution, open device and browser navigation, click [here](example/testClient.js) for the complite example:
+- Starting a new execution, open device and browser navigation example:
 ```JavaScript
 client.startNewExecution()
     .then((execution_Id)=>{
