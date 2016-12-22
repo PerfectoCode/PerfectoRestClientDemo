@@ -6,7 +6,7 @@ Get started with Perfecto RESTful API, read more at our [Community](https://comm
 ## **Install & dependencies:**
 - Run `npm install` command within the project's directory.
 
-## ***Running tests:*
+## **Running tests:**
 - The tests example [here](example/PerfectoSpec.js) uses Jasmine testing framework.
 - Configure your Perfecto lab User, password and host at [ClientConf.js](example/ClientConf.js).
 - Run the tests using `npm test` command.  
