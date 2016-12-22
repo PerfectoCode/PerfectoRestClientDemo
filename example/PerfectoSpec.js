@@ -11,18 +11,18 @@ describe("Test perfecto NodeJS RESTful API client", function() {
 	// beforeEach creates new execution and open device
   beforeEach(function(done) {
 		client.startNewExecution()
-    	.then((execution_Id)=>{
-				logger.log('========== Before Test ==========')
-				logger.log('Trying to Open device with id: ' + deviceId + ' And execution id: ' + execution_Id);
-				return client.openDevice(deviceId);
-    	})
-			.then((ans)=>{
-				logger.log('Open device status: ' + JSON.parse(ans)['description']);
-				done();
-			})
-			.catch((err) =>{
-				logger.log(err);
-			});
+		.then((execution_Id)=>{
+			logger.log('========== Before Test ==========')
+			logger.log('Trying to Open device with id: ' + deviceId + ' And execution id: ' + execution_Id);
+			return client.openDevice(deviceId);
+		})
+		.then((ans)=>{
+			logger.log('Open device status: ' + JSON.parse(ans)['description']);
+			done();
+		})
+		.catch((err) =>{
+			logger.log(err);
+		});
   });
 
 	// afterEach closing the device and ends the execution
@@ -52,18 +52,18 @@ describe("Test perfecto NodeJS RESTful API client", function() {
         return client.browserFindElement('name', 'q');
     })
     .then((ans)=>{
-        logger.log('insert text: \'Perfecto\'');
-        /**
-         * 'returnValue' contains the XPath of the returned element
-         * (if there's more then one returns an array of values)
-         */
-        let elem = JSON.parse(ans).returnValue; 
-        elem = elem.substring(1, elem.length - 1); // remove the '[' & ']' from the string
-        return client.browserSetElementValue('xpath', elem, 'Perfecto');
+			logger.log('insert text: \'Perfecto\'');
+			/**
+			 * 'returnValue' contains the XPath of the returned element
+			 * (if there's more then one returns an array of values)
+			 */
+			let elem = JSON.parse(ans).returnValue; 
+			elem = elem.substring(1, elem.length - 1); // remove the '[' & ']' from the string
+			return client.browserSetElementValue('xpath', elem, 'Perfecto');
     })
     .then((ans)=>{
-        logger.log('press search button')
-        return client.browserElementClick('name', 'btnG');
+			logger.log('press search button')
+			return client.browserElementClick('name', 'btnG');
     })
 		.then((ans)=>{
 			done();
