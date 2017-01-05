@@ -10,27 +10,22 @@ describe("Test perfecto NodeJS RESTful API client", function() {
 
   // beforeEach creates new execution and open device
   beforeEach(function(done) {
+    logger.log('========== Before Test ==========');
     client.startNewExecution()
       .then((execution_Id)=>{
-        logger.log('========== Before Test ==========')
-        logger.log('Trying to Open device with id: ' + deviceId + ' And execution id: ' + execution_Id);
-      return client.openDevice(deviceId);
+        return client.openDevice(deviceId);
       })
       .then((ans)=>{
-        logger.log('Open device status: ' + JSON.parse(ans)['description']);
         done();
-      })
-      .catch((err) =>{
-        logger.log(err);
       });
   });
 
   // afterEach closing the device and ends the execution
   afterEach(function(done) {
+    logger.log('========== After Test ==========')
     client.closeDevice()
       .then((ans) =>{
-        logger.log('========== After Test ==========')
-        logger.log('Closing device status: ' + JSON.parse(ans)['description']);
+        // logger.log('Closing device status: ' + JSON.parse(ans)['description']);
         return client.endExecution();
       })
       .then((ans) =>{
@@ -44,15 +39,12 @@ describe("Test perfecto NodeJS RESTful API client", function() {
 
     client.browserOpen()
       .then((ans)=>{
-        logger.log('navigating to google');
         return client.browserGoTo('https://google.com');
       })
       .then((ans)=>{
-          logger.log('find element with name: \'q\'');
           return client.browserFindElement('name', 'q');
       })
       .then((ans)=>{
-        logger.log('insert text: \'Perfecto\'');
         /**
          * 'returnValue' contains the XPath of the returned element
          * (if there's more then one returns an array of values)
@@ -62,7 +54,6 @@ describe("Test perfecto NodeJS RESTful API client", function() {
         return client.browserSetElementValue('xpath', elem, 'Perfecto');
       })
       .then((ans)=>{
-        logger.log('press search button')
         return client.browserElementClick('name', 'btnG');
       })
       .then((ans)=>{
